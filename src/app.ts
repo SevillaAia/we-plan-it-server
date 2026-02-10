@@ -14,9 +14,18 @@ import { errorHandler, notFoundHandler } from "./middleware/error-handling";
 const app: Application = express();
 
 // Middleware
+const allowedOrigins = (process.env.ORIGIN || "http://localhost:5173").split(',');
 app.use(
   cors({
-    origin: process.env.ORIGIN || "http://localhost:5173",
+    origin: function (origin, callback) {
+      // allow requests with no origin (like mobile apps, curl, etc.)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   })
 );
@@ -31,7 +40,7 @@ app.get("/", (req, res) => {
 });
 
 // Routes
-app.use("/api", indexRoutes);
+app.use("/api", planRoutes);
 app.use("/api/plans", planRoutes);
 
 // Error handling

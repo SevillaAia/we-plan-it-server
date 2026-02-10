@@ -1,6 +1,8 @@
 import { Router, Request, Response } from "express";
 import prisma from "../lib/prisma";
 
+
+
 const router = Router();
 
 // Get all plans
@@ -15,6 +17,7 @@ router.get("/", async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ message: "Error fetching plans" });
   }
 });
+
 
 // Get single plan
 router.get("/:id", async (req: Request, res: Response): Promise<void> => {
@@ -36,6 +39,7 @@ router.get("/:id", async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ message: "Error fetching plan" });
   }
 });
+
 
 // Create plan
 router.post("/", async (req: Request, res: Response): Promise<void> => {
