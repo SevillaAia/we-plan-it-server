@@ -19,6 +19,9 @@ model Plan {
   title       String
   description String?
   dueDate     DateTime?
+  address     String?
+  telephone   String?
+  email       String?
   priority    Priority  @default(MEDIUM)
   completed   Boolean   @default(false)
   createdAt   DateTime  @default(now())
