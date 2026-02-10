@@ -25,6 +25,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(morgan("dev"));
 
+// Root route
+app.get("/", (req, res) => {
+  res.json({ message: "We Plan It API is running! Use /api for endpoints." });
+});
+
 // Routes
 app.use("/api", indexRoutes);
 app.use("/api/plans", planRoutes);
