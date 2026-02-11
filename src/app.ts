@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
 });
 
 // Routes
-app.use("/api", planRoutes);
+app.use("/api", indexRoutes);
 app.use("/api/plans", planRoutes);
 
 // Error handling
