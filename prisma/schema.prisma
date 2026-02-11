@@ -29,6 +29,16 @@ model Plan {
   @@map("plans")
 }
 
+model WeatherForecast {
+  id          String   @id @default(uuid())
+  date        DateTime
+  location    String
+  temperature Float
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 // Enums
 enum Priority {
   LOW
