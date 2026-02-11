@@ -14,7 +14,13 @@ import { errorHandler, notFoundHandler } from "./middleware/error-handling";
 const app: Application = express();
 
 // Middleware
-const allowedOrigins = (process.env.ORIGIN || "http://localhost:5173").split(',');
+// Add your deployed frontend domain(s) to the allowedOrigins array
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://we-plan-it.vercel.app",
+  "https://we-plan-it.netlify.app",
+  "https://we-plan-rhg7im450-sevillaaias-projects.vercel.app"
+];
 app.use(
   cors({
     origin: function (origin, callback) {

@@ -13,7 +13,6 @@ datasource db {
   provider = "postgresql"
 }
 
-// Plan model - matches frontend Plan type
 model Plan {
   id          String    @id @default(uuid())
   title       String
