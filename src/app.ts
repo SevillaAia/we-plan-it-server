@@ -15,7 +15,10 @@ const app: Application = express();
 
 // Middleware
 // Use allowedOrigins from .env file
-const allowedOrigins = (process.env.ORIGIN || "http://localhost:5173").split(',');
+const allowedOrigins = (process.env.ORIGIN || "http://localhost:5173")
+  .split(",")
+  .map((o) => o.trim())
+  .filter(Boolean);
 app.use(
   cors({
     origin: function (origin, callback) {
